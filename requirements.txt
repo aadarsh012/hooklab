@@ -1,0 +1,11 @@
+sentence-transformers
+chromadb
+google-generativeai
+groq
+langchain
+langgraph
+pydantic
+streamlit
+scikit-learn
+python-dotenv
+pandas
