@@ -17,13 +17,13 @@ YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
 # Collection settings
 SEARCH_QUERIES = [
     "fitness tips shorts",
-    "gym motivation shorts",
-    "workout tips",
-    "weight loss tips shorts",
-    "muscle building tips",
-    "home workout shorts",
-    "fitness transformation",
-    "gym tips for beginners",
+    "gym motivation shorts"
+    # "workout tips",
+    # "weight loss tips shorts",
+    # "muscle building tips",
+    # "home workout shorts",
+    # "fitness transformation",
+    # "gym tips for beginners",
 ]
 MAX_RESULTS_PER_QUERY = 50
 TARGET_HOOK_COUNT = 400

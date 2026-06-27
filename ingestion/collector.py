@@ -7,11 +7,12 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
+import requests
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from youtube_transcript_api import YouTubeTranscriptApi
 
-from hooklab.config import (
+from config.config import (
     MAX_RESULTS_PER_QUERY,
     SEARCH_QUERIES,
     TARGET_HOOK_COUNT,
@@ -42,7 +43,7 @@ def search_shorts(youtube, query: str, max_results: int = 50) -> list[dict]:
             type="video",
             videoDuration="short",
             relevanceLanguage="en",
-            maxResults=min(50, max_results - len(results)),
+            maxResults=min(50, (max_results - len(results)) * 2),
             pageToken=next_page_token,
         )
 
@@ -56,9 +57,13 @@ def search_shorts(youtube, query: str, max_results: int = 50) -> list[dict]:
             raise
 
         for item in response.get("items", []):
+            vid = item["id"]["videoId"]
+            if not is_youtube_short(vid):
+                logger.debug(f"Skipping non-Short: {vid}")
+                continue
             results.append(
                 {
-                    "video_id": item["id"]["videoId"],
+                    "video_id": vid,
                     "title": item["snippet"]["title"],
                 }
             )
@@ -102,13 +107,21 @@ def get_video_stats(youtube, video_ids: list[str]) -> dict[str, dict]:
     return stats
 
 
+def is_youtube_short(video_id: str) -> bool:
+    """Verify a video is indexed as a YouTube Short via URL redirect."""
+    try:
+        url = f"https://www.youtube.com/shorts/{video_id}"
+        response = requests.head(url, allow_redirects=True, timeout=5)
+        return "/shorts/" in response.url
+    except requests.RequestException:
+        return False
+
+
 def extract_hook_from_transcript(video_id: str, max_sentences: int = 2) -> tuple[str, str] | None:
     """Extract the first 1-2 sentences from a video's auto-captions."""
     try:
-        transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)  # type: ignore[attr-defined]
-        transcript = transcript_list.find_transcript(["en"])
-        segments = transcript.fetch()
-
+        ytt_api = YouTubeTranscriptApi()
+        segments = ytt_api.fetch(video_id, languages=["en"])
         full_text = " ".join(seg.text for seg in segments).strip()
 
         if len(full_text) < 10:
@@ -131,7 +144,8 @@ def extract_hook_from_transcript(video_id: str, max_sentences: int = 2) -> tuple
 
         return hook, excerpt
 
-    except Exception:
+    except Exception as e:
+        logger.warning(f"Transcript failed for {video_id}: {e}")
         return None
 
 

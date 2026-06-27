@@ -4,7 +4,7 @@ import sys
 
 sys.path.insert(0, ".")
 
-from hooklab.config import GEMINI_API_KEY, GROQ_API_KEY
+from config.config import GEMINI_API_KEY, GROQ_API_KEY
 
 
 def test_gemini():

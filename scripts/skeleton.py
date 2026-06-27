@@ -16,7 +16,7 @@ import chromadb
 import google.generativeai as genai
 from sentence_transformers import SentenceTransformer
 
-from hooklab.config import GEMINI_API_KEY
+from config.config import GEMINI_API_KEY
 
 
 def main():
