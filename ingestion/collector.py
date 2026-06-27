@@ -32,7 +32,7 @@ def _get_youtube_client():
 
 def search_shorts(youtube, query: str, max_results: int = 50) -> list[dict]:
     """Search YouTube for short-form videos matching the query."""
-    results = []
+    results: list[dict] = []
     next_page_token = None
 
     while len(results) < max_results:
@@ -102,12 +102,10 @@ def get_video_stats(youtube, video_ids: list[str]) -> dict[str, dict]:
     return stats
 
 
-def extract_hook_from_transcript(
-    video_id: str, max_sentences: int = 2
-) -> tuple[str, str] | None:
+def extract_hook_from_transcript(video_id: str, max_sentences: int = 2) -> tuple[str, str] | None:
     """Extract the first 1-2 sentences from a video's auto-captions."""
     try:
-        transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
+        transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)  # type: ignore[attr-defined]
         transcript = transcript_list.find_transcript(["en"])
         segments = transcript.fetch()
 

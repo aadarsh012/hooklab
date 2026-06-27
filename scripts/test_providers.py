@@ -1,6 +1,7 @@
 """Smoke test: verify Gemini and Groq API keys are working."""
 
 import sys
+
 sys.path.insert(0, ".")
 
 from hooklab.config import GEMINI_API_KEY, GROQ_API_KEY

@@ -16,8 +16,8 @@ import sys
 
 sys.path.insert(0, ".")
 
-from ingestion.collector import collect_hooks
 from ingestion.cleaner import clean_hooks
+from ingestion.collector import collect_hooks
 from ingestion.labeler import label_hooks
 from ingestion.manual import import_manual_csv
 from ingestion.splitter import split_dataset

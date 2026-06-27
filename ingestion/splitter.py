@@ -34,7 +34,7 @@ def split_dataset(
         for line in f:
             hooks.append(CleanedHook(**json.loads(line)))
 
-    labels = [h.label.value for h in hooks]
+    labels = [h.label.value for h in hooks if h.label is not None]
 
     train_hooks, test_hooks = train_test_split(
         hooks,
@@ -51,10 +51,11 @@ def split_dataset(
                 f.write(hook.model_dump_json() + "\n")
 
     # Compute label distributions
-    def _dist(split):
-        counts = {}
+    def _dist(split: list[CleanedHook]) -> dict[str, int]:
+        counts: dict[str, int] = {}
         for h in split:
-            counts[h.label.value] = counts.get(h.label.value, 0) + 1
+            key = h.label.value if h.label else "unlabeled"
+            counts[key] = counts.get(key, 0) + 1
         return counts
 
     metadata = SplitDataset(

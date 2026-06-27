@@ -12,9 +12,9 @@ import sys
 
 sys.path.insert(0, ".")
 
-from sentence_transformers import SentenceTransformer
 import chromadb
 import google.generativeai as genai
+from sentence_transformers import SentenceTransformer
 
 from hooklab.config import GEMINI_API_KEY
 
@@ -49,10 +49,7 @@ def main():
         ids=[h["hook_id"] for h in hooks],
         embeddings=[e.tolist() for e in embeddings],
         documents=texts,
-        metadatas=[
-            {"label": h["label"], "engagement_ratio": h["engagement_ratio"]}
-            for h in hooks
-        ],
+        metadatas=[{"label": h["label"], "engagement_ratio": h["engagement_ratio"]} for h in hooks],
     )
     print(f"Stored {len(hooks)} hooks in Chroma")
 
@@ -71,10 +68,9 @@ def main():
         doc = results["documents"][0][i]
         meta = results["metadatas"][0][i]
         dist = results["distances"][0][i]
-        print(f"  {i+1}. [{meta['label']}] (dist={dist:.4f}) {doc}")
+        print(f"  {i + 1}. [{meta['label']}] (dist={dist:.4f}) {doc}")
 
     nearest_hook = results["documents"][0][0]
-    nearest_meta = results["metadatas"][0][0]
 
     # 5. Gemini says one sentence
     if not GEMINI_API_KEY:

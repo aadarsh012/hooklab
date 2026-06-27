@@ -11,3 +11,5 @@ python-dotenv
 pandas
 google-api-python-client
 youtube-transcript-api
+ruff
+mypy

@@ -6,7 +6,7 @@ import logging
 import re
 from pathlib import Path
 
-from ingestion.schemas import CleanedHook, RawHook
+from ingestion.schemas import CleanedHook
 
 logger = logging.getLogger(__name__)
 
@@ -14,13 +14,9 @@ RAW_INPUT_PATH = Path("data/raw/raw_hooks.jsonl")
 CLEANED_OUTPUT_PATH = Path("data/processed/cleaned_hooks.jsonl")
 
 # Transcript artifacts to remove
-ARTIFACTS = re.compile(
-    r"\[(?:Music|Applause|Laughter|Cheering|Foreign)\]", re.IGNORECASE
-)
+ARTIFACTS = re.compile(r"\[(?:Music|Applause|Laughter|Cheering|Foreign)\]", re.IGNORECASE)
 # Common filler words at the start
-FILLER_START = re.compile(
-    r"^(?:um|uh|so|okay so|ok so|alright so|like|you know)\s+", re.IGNORECASE
-)
+FILLER_START = re.compile(r"^(?:um|uh|so|okay so|ok so|alright so|like|you know)\s+", re.IGNORECASE)
 
 MIN_VIEW_COUNT = 100
 MIN_HOOK_LENGTH = 10

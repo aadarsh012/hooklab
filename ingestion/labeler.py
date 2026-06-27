@@ -64,10 +64,7 @@ def label_hooks(
     # Log distribution
     strong = sum(1 for h in labeled if h.label == EngagementLabel.STRONG)
     weak = sum(1 for h in labeled if h.label == EngagementLabel.WEAK)
-    logger.info(
-        f"Labeling ({strategy}): {len(labeled)} hooks — "
-        f"strong={strong}, weak={weak}"
-    )
+    logger.info(f"Labeling ({strategy}): {len(labeled)} hooks — strong={strong}, weak={weak}")
     if strategy == "median":
         logger.info(f"  Median threshold: {threshold:.6f}")
     logger.info(

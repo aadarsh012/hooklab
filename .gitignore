@@ -26,6 +26,10 @@ env/
 .DS_Store
 Thumbs.db
 
+# Linting/type checking
+.mypy_cache/
+.ruff_cache/
+
 # Project specific
 chroma_db/
 *.pkl
