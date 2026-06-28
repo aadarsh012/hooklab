@@ -1,6 +1,6 @@
 sentence-transformers
 chromadb
-google-generativeai
+google-genai
 groq
 langchain
 langgraph

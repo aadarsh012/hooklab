@@ -38,6 +38,16 @@ class CleanedHook(BaseModel):
     label: Optional[EngagementLabel] = None
 
 
+class RetrievalResult(BaseModel):
+    """A single hook returned from vector similarity search."""
+
+    hook_id: str
+    hook_text: str
+    label: Optional[str] = None
+    engagement_ratio: float = 0.0
+    distance: float = 0.0
+
+
 class SplitDataset(BaseModel):
     """Metadata about the train/test split."""
 
