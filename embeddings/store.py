@@ -85,3 +85,16 @@ class HookVectorStore:
             )
 
         return retrieval_results
+
+    def get_embeddings(self, hook_ids: list[str]) -> dict:
+        """Fetch stored embeddings from Chroma by ID.
+
+        Returns dict mapping hook_id -> embedding vector (list[float]).
+        Used by Phase 3 classifier to get features without re-encoding.
+        """
+        result = self.collection.get(ids=hook_ids, include=["embeddings"])
+        embeddings = result["embeddings"] or []
+        return {
+            hook_id: embedding
+            for hook_id, embedding in zip(result["ids"], embeddings)
+        }
