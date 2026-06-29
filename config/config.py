@@ -1,5 +1,7 @@
 import os
 
+from typing import Optional
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -35,3 +37,9 @@ SCORING_DIMENSIONS = [
     "clarity_of_payoff",
     "concreteness",
 ]
+
+# Embedding & retrieval settings
+EMBEDDING_MODEL_NAME = "all-MiniLM-L6-v2"
+CHROMA_COLLECTION_NAME = "hooklab_hooks"
+CHROMA_PERSIST_DIR: Optional[str] = None  # None = in-memory, set to "chroma_db/" for persistence
+DEFAULT_TOP_K = 3
