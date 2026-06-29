@@ -1,14 +1,14 @@
 {
-  "total": 12,
-  "train_count": 9,
-  "test_count": 3,
+  "total": 20,
+  "train_count": 16,
+  "test_count": 4,
   "label_distribution_train": {
-    "strong": 4,
-    "weak": 5
+    "strong": 8,
+    "weak": 8
   },
   "label_distribution_test": {
-    "weak": 1,
-    "strong": 2
+    "strong": 2,
+    "weak": 2
   },
-  "split_date": "2026-06-28T13:16:23.804810+00:00"
+  "split_date": "2026-06-29T17:43:04.285860+00:00"
 }
