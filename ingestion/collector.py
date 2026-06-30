@@ -208,11 +208,17 @@ def collect_hooks(
                 continue
 
             hook_result = extract_hook_from_transcript(vid)
-            if not hook_result:
-                skipped += 1
-                continue
-
-            hook_text, excerpt = hook_result
+            if hook_result:
+                hook_text, excerpt = hook_result
+            else:
+                # Fall back to video title as the hook
+                title = result.get("title", "").strip()
+                if len(title) < 10:
+                    skipped += 1
+                    continue
+                hook_text = title
+                excerpt = ""
+                logger.debug("Using title as hook for %s: %s", vid, title[:60])
 
             raw_hook = RawHook(
                 video_id=vid,

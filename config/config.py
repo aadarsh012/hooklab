@@ -23,30 +23,30 @@ SEARCH_QUERIES = [
     "gym motivation shorts",
     "workout tips",
     "home workout shorts",
-    "gym tips for beginners"
-    # # Weight & body
-    # "weight loss tips shorts",
-    # "lose belly fat shorts",
-    # "body transformation shorts",
-    # "fitness transformation",
-    # "fat burning workout shorts",
-    # # Muscle building
-    # "muscle building tips",
-    # "how to build muscle shorts",
-    # "arm workout shorts",
-    # "chest workout shorts",
-    # "leg day shorts",
-    # # Nutrition
-    # "protein shake recipe shorts",
-    # "meal prep fitness shorts",
-    # "what I eat in a day fitness",
-    # "diet tips shorts",
-    # # Specific exercises
-    # "push up challenge shorts",
-    # "abs workout shorts",
-    # "stretching routine shorts",
-    # "calisthenics shorts",
-    # "running tips shorts",
+    "gym tips for beginners",
+    # Weight & body
+    "weight loss tips shorts",
+    "lose belly fat shorts",
+    "body transformation shorts",
+    "fitness transformation",
+    "fat burning workout shorts",
+    # Muscle building
+    "muscle building tips",
+    "how to build muscle shorts",
+    "arm workout shorts",
+    "chest workout shorts",
+    "leg day shorts",
+    # Nutrition
+    "protein shake recipe shorts",
+    "meal prep fitness shorts",
+    "what I eat in a day fitness",
+    "diet tips shorts",
+    # Specific exercises
+    "push up challenge shorts",
+    "abs workout shorts",
+    "stretching routine shorts",
+    "calisthenics shorts",
+    "running tips shorts",
 ]
 MAX_RESULTS_PER_QUERY = 50
 TARGET_HOOK_COUNT = 400
