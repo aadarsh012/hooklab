@@ -18,14 +18,35 @@ YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
 
 # Collection settings
 SEARCH_QUERIES = [
+    # General fitness
     "fitness tips shorts",
-    "gym motivation shorts"
+    "gym motivation shorts",
     "workout tips",
-    "weight loss tips shorts",
-    "muscle building tips",
     "home workout shorts",
-    "fitness transformation",
-    "gym tips for beginners",
+    "gym tips for beginners"
+    # # Weight & body
+    # "weight loss tips shorts",
+    # "lose belly fat shorts",
+    # "body transformation shorts",
+    # "fitness transformation",
+    # "fat burning workout shorts",
+    # # Muscle building
+    # "muscle building tips",
+    # "how to build muscle shorts",
+    # "arm workout shorts",
+    # "chest workout shorts",
+    # "leg day shorts",
+    # # Nutrition
+    # "protein shake recipe shorts",
+    # "meal prep fitness shorts",
+    # "what I eat in a day fitness",
+    # "diet tips shorts",
+    # # Specific exercises
+    # "push up challenge shorts",
+    # "abs workout shorts",
+    # "stretching routine shorts",
+    # "calisthenics shorts",
+    # "running tips shorts",
 ]
 MAX_RESULTS_PER_QUERY = 50
 TARGET_HOOK_COUNT = 400
