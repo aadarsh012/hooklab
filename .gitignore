@@ -33,3 +33,4 @@ Thumbs.db
 # Project specific
 chroma_db/
 *.pkl
+*.joblib

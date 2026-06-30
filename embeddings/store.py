@@ -93,7 +93,7 @@ class HookVectorStore:
         Used by Phase 3 classifier to get features without re-encoding.
         """
         result = self.collection.get(ids=hook_ids, include=["embeddings"])
-        embeddings = result["embeddings"] or []
+        embeddings = result["embeddings"] if result["embeddings"] is not None else []
         return {
             hook_id: embedding
             for hook_id, embedding in zip(result["ids"], embeddings)
