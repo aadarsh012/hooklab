@@ -11,5 +11,7 @@ python-dotenv
 pandas
 google-api-python-client
 youtube-transcript-api
+fastapi
+uvicorn[standard]
 ruff
 mypy
