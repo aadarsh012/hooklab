@@ -1,10 +1,12 @@
 import os
-
-from typing import Optional
+from pathlib import Path
 
 from dotenv import load_dotenv
 
 load_dotenv()
+
+# Project root — all relative paths resolve from here
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 # Niche
 NICHE = "fitness"
@@ -62,5 +64,5 @@ SCORING_DIMENSIONS = [
 # Embedding & retrieval settings
 EMBEDDING_MODEL_NAME = "all-MiniLM-L6-v2"
 CHROMA_COLLECTION_NAME = "hooklab_hooks"
-CHROMA_PERSIST_DIR: Optional[str] = "chroma_db/"
+CHROMA_PERSIST_DIR: str = str(PROJECT_ROOT / "chroma_db")
 DEFAULT_TOP_K = 3
