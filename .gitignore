@@ -34,3 +34,8 @@ Thumbs.db
 chroma_db/
 *.pkl
 *.joblib
+
+# Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/.env.local
