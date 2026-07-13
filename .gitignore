@@ -31,9 +31,7 @@ Thumbs.db
 .ruff_cache/
 
 # Project specific
-chroma_db/
 *.pkl
-*.joblib
 
 # Frontend
 frontend/node_modules/
