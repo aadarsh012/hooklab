@@ -1,6 +1,6 @@
 export default function Header() {
   return (
-    <header className="flex items-center justify-between px-6 py-4 border-b border-[#2a2a2a]">
+    <header className="shrink-0 flex items-center justify-between px-6 py-4 border-b border-[#2a2a2a]">
       <div className="flex items-center gap-3">
         <div className="w-8 h-8 bg-green-400 rounded-lg flex items-center justify-center text-black font-bold text-sm">
           H

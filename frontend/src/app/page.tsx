@@ -47,13 +47,13 @@ export default function Home() {
   const strengthScore = result ? computeStrengthScore(result) : null;
 
   return (
-    <div className="min-h-screen bg-[#111111] text-white overflow-x-hidden">
+    <div className="min-h-screen lg:h-screen bg-[#111111] text-white flex flex-col lg:overflow-hidden">
       <Header />
 
-      <div className="max-w-[1400px] mx-auto px-6 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-5 items-start">
+      <div className="flex-1 lg:overflow-hidden">
+        <div className="h-full max-w-[1400px] mx-auto px-6 py-8 flex flex-col lg:flex-row gap-5">
           {/* Left column */}
-          <div className="space-y-4">
+          <div className="lg:w-[360px] shrink-0 space-y-4 lg:min-h-0 lg:overflow-y-auto lg:pb-8">
             <HookInputCard
               hookText={hookText}
               setHookText={setHookText}
@@ -69,7 +69,7 @@ export default function Home() {
           </div>
 
           {/* Right column */}
-          <div className="space-y-4">
+          <div className="flex-1 lg:min-h-0 lg:overflow-y-auto space-y-4 pb-8">
             {error && (
               <div className="bg-red-900/20 border border-red-700/40 rounded-2xl p-5 text-red-400 text-sm">
                 {error}
