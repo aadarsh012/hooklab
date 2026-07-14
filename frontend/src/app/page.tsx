@@ -47,11 +47,11 @@ export default function Home() {
   const strengthScore = result ? computeStrengthScore(result) : null;
 
   return (
-    <div className="min-h-screen bg-[#111111] text-white">
+    <div className="min-h-screen bg-[#111111] text-white overflow-x-hidden">
       <Header />
 
       <div className="max-w-[1400px] mx-auto px-6 py-8">
-        <div className="grid grid-cols-[360px_1fr] gap-5 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-5 items-start">
           {/* Left column */}
           <div className="space-y-4">
             <HookInputCard
