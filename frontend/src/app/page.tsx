@@ -8,7 +8,9 @@ import DimensionBreakdown from "@/components/DimensionBreakdown";
 import PersonaPanel from "@/components/PersonaPanel";
 import RewriteCards from "@/components/RewriteCards";
 import SimilarHooks from "@/components/SimilarHooks";
+import LoginScreen from "@/components/LoginScreen";
 import { analyzeHook } from "@/lib/api";
+import { useSession } from "@/lib/auth-client";
 import type { AnalysisResult } from "@/types/analysis";
 
 function computeStrengthScore(result: AnalysisResult): number {
@@ -18,6 +20,7 @@ function computeStrengthScore(result: AnalysisResult): number {
 }
 
 export default function Home() {
+  const { data: session, isPending } = useSession();
   const [hookText, setHookText] = useState("");
   const [result, setResult] = useState<AnalysisResult | null>(null);
   const [loading, setLoading] = useState(false);
@@ -45,6 +48,19 @@ export default function Home() {
   }
 
   const strengthScore = result ? computeStrengthScore(result) : null;
+
+  // Auth gate: wait for the session check, then show login or the app.
+  if (isPending) {
+    return (
+      <div className="min-h-screen bg-[#111111] text-white flex items-center justify-center">
+        <div className="text-gray-500 text-sm">Loading…</div>
+      </div>
+    );
+  }
+
+  if (!session) {
+    return <LoginScreen />;
+  }
 
   return (
     <div className="min-h-screen lg:h-screen bg-[#111111] text-white flex flex-col lg:overflow-hidden">

@@ -18,6 +18,13 @@ GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 # YouTube Data API
 YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
 
+# Auth — Better Auth (Next.js) issues JWTs the backend verifies against its JWKS.
+# BETTER_AUTH_JWKS_URL: public keys endpoint, e.g. https://<frontend>/api/auth/jwks
+# BETTER_AUTH_ISSUER:   expected `iss` claim, e.g. https://<frontend>
+# Verification is purely cryptographic — the backend never touches the auth DB.
+BETTER_AUTH_JWKS_URL = os.getenv("BETTER_AUTH_JWKS_URL")
+BETTER_AUTH_ISSUER = os.getenv("BETTER_AUTH_ISSUER")
+
 # Collection settings
 SEARCH_QUERIES = [
     # General fitness
