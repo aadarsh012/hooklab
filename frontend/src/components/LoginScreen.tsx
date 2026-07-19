@@ -39,7 +39,7 @@ export default function LoginScreen() {
         <div className="bg-[#1a1a1a] border border-[#2a2a2a] rounded-2xl p-8">
           <h1 className="text-xl font-semibold text-white text-center">Sign in to continue</h1>
           <p className="text-sm text-gray-500 text-center mt-2 mb-6">
-            Analyze and sharpen your hooks. Your work stays in your account.
+            Analyze and sharpen your hooks.
           </p>
 
           <button
